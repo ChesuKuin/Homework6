@@ -1,0 +1,66 @@
+﻿<Window x:Class="Homework_6.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Homework_6"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="500" Width="800" Closing="Window_Closing" Closed="Window_Closed">
+
+
+
+
+    <StackPanel x:Name="st">
+
+        <ListView Margin="10" Name="lvEmployee">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Имя" 
+                                    Width="150" 
+                                    DisplayMemberBinding="{Binding Name}"/>
+
+                    <GridViewColumn Header="Фамилия" Width="150" 
+                                    DisplayMemberBinding="{Binding Surname}"  />
+
+                    <GridViewColumn Header="Департамент" Width="150" 
+                                    DisplayMemberBinding="{Binding Departament}" />
+
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+
+        <ListBox Margin="10" Name="listEmployee" ItemsSource="{Binding Db}" MouseDoubleClick="listEmployee_MouseDoubleClick">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Canvas Height="80" Width="220">
+                        <Canvas Background="LightSkyBlue" Width="200" Height="40">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Name}"  FontSize="20" 
+                                       Foreground="Black" Width="100"/>
+                        </Canvas>
+                        <Canvas Background="SkyBlue" Width="200" Height="40" Canvas.Left="200">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Surname}" FontSize="20" 
+                                       Foreground="BLack"/>
+                        </Canvas>
+                        <Canvas Background="AliceBlue" Width="400" Height="40" Canvas.Left="0" Canvas.Top="40">
+                            <TextBlock TextWrapping="Wrap" Text="{Binding Departament}" FontSize="20" 
+                                       Foreground="Black"/>
+                        </Canvas>
+                    </Canvas>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button  
+            x:Name="addEmployee"
+            Content="Добавить сотрудника" 
+            FontSize="20" 
+            FontWeight="Bold" 
+            FontStyle="Italic"  
+            Height="74" 
+            Margin="10,0"
+            Click="AddEmployeeClick"
+            />
+
+
+    </StackPanel>
+</Window>
